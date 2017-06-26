@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.css">
+    <script src="bootstrap-3.3.7/js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="Scripts/vue.js"></script>
+    <style>        
+        .a{
+            background-color: #A1ACDB;            
+            color:#fff;
+        }
+        .b{
+            background-color:#4D5C9F;            
+        }
+        #DivAroundContent{
+            background-color: #A1ACDB;
+        }
+        footer{            
+            border:2px solid black;
+            height:200px;
+            padding:50px;
+        }
+        input{
+            background:pink;
+        }
+    </style>
+    <script type="text/javascript">
+        var times = 0;
+        function change(btn) {
+            if(times % 2 == 0)
+            {
+                btn.style.background = 'gray';
+                btn.style.fontSize = 25 + 'px';
+                btn.value = "变回去";                
+                times++;
+            }
+            else
+            {
+                btn.style.background = 'pink';
+                btn.style.fontSize = 15 + 'px';
+                btn.value = "变 色";
+                times++;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header h1">侧向选项卡</div>
+        <div class="table-responsive">
+            <table class="table-bordered table-responsive" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="150px">
+                        <table border="1" id="left" class="table-bordered table-hover text-center" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td height="50px" class="b" onmouseover="ChangeFocus(this)">周一</td>
+                            </tr>
+                            <tr>
+                                <td height="50px" class="a" onmouseover="ChangeFocus(this)">周二</td>
+                            </tr>
+                            <tr>
+                                <td height="50px" class="b" onmouseover="ChangeFocus(this)">周三</td>
+                            </tr>
+                            <tr>
+                                <td height="50px" class="b" onmouseover="ChangeFocus(this)">周四</td>
+                            </tr>
+                            <tr>
+                                <td height="50px" class="b" onmouseover="ChangeFocus(this)">周五</td>
+                            </tr>
+                            <tr>
+                                <td height="200px"> </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="450px">
+                        <table class="table-bordered " width="100%">
+                            <tr>
+                                <td height="450px" valign="top" align="center" id="DivAroundContent">内容</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <hr />
+        <div class="page-header h1">点击变色</div>        
+        <footer>
+            <input type="button" id="tt" style=" font-size:15px;width:100px;height:50px" value="变 色"  onclick="change(this)"/>
+        </footer>
+    </div>   
+    <script language="javascript">
+        var array = new Array();
+        array[0] = "<p class='h3'>周一晴天</p>";
+        array[1] = "<p class='h3'>周二阴天</p>";
+        array[2] = "<p class='h3'>周三多云</p>";
+        array[3] = "<p class='h3'>周四小雨</p>";
+        array[4] = "<p class='h3'>周五大雨</p>";
+
+        function ChangeFocus(obj) {            
+            for (i = 0; i < document.getElementById("left").rows.length; i++) {
+                if (document.getElementById("left").rows[i].cells[0] == obj) {
+                    document.getElementById("left").rows[i].cells[0].className = "a";
+                    document.getElementById("DivAroundContent").innerHTML = array[i];
+                }
+                else {
+                    document.getElementById("left").rows[i].cells[0].className = "b";
+                }
+            }
+        }
+        ChangeFocus(document.getElementById("left").rows[1].cells[0]);
+    </script>
+    
+</body>
+</html>
